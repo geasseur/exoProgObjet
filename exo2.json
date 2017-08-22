@@ -1,0 +1,10 @@
+{"game": [
+{"nom" : "dragon age", "editeur" : "bioware" , "genre" : "rpg", "date": 2009},
+{"nom" : "stellaris", "editeur":"paradoxe","genre": "strategie" , "date": 2016},
+{"nom" : "warcraft", "editeur":"blizzard","genre": "strategie" , "date": 1995},
+{"nom" : "age of Empire", "editeur":"inconnu", "genre": "strategie" , "date": 1999},
+{"nom" : "dbz xenoverse", "editeur":"bandai","genre": "combat" , "date": 2016},
+{"nom" : "crash bandicoot", "editeur":"naughty dog","genre": "plateforme" , "date": 1998},
+{"nom" : "prototype", "editeur":"inconnu","genre": "beat them up" , "date": 2009}
+]
+}

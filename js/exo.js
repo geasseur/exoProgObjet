@@ -212,52 +212,28 @@ function ficheProduit(titre, accroche, description){
 }
 */
 
-/********************************************************************/
-/********************************************************************/
-/********************************************************************/
-/********************************************************************/
-/********************************************************************/
-/*****************EXERCICE 4*****************************************/
-/********************************************************************/
-/********************************************************************/
-/********************************************************************/
-/********************************************************************/
+/************************************************/
+/*******************************************************/
+/******************************************************/
+/**************************************************/
+/****************************************************/
+/*****************EXERCICE 4**************************/
+/******************************************************/
+/*****************************************************/
+/********************************************************/
+/**************************************************/
 
-// ancien code de compatibilité, aujourd’hui inutile
-/*function makeRequest(url) {
-
-        var httpRequest = false;
-
-        httpRequest = new XMLHttpRequest();
-
-        if (!httpRequest) {
-            alert('Abandon :( Impossible de créer une instance XMLHTTP');
-            return false;
-        }
-        httpRequest.onreadystatechange = function() { alertContents(httpRequest); };
-        httpRequest.open('GET', "exo.json", true);
-        httpRequest.send(null);
-
-    }
-
-    function alertContents(httpRequest) {
-
-        if (httpRequest.readyState == XMLHttpRequest.DONE) {
-            if (httpRequest.status == 200) {
-                alert(httpRequest.responseText);
-            } else {
-                alert('Un problème est survenu avec la requête.');
-            }
-        }
-
-    }
-*/
-
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function() {
+  function recherche(value){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML = this.responseText;
+      var myObj = JSON.parse(this.responseText);
+      document.getElementById("tabJeu").innerHTML = "";
+      for (var i = 0; i < myObj.game.length; i++) {
+        document.getElementById("tabJeu").innerHTML += "<td>" + myObj.game[i][value] + "</td>"+" "+ "<td>" + myObj.game[i]["nom"]+ "</td>";
+      }
+
     }
   };
-  xmlhttp.open("GET", "exo.json", true);
-  xmlhttp.send();
+  xmlhttp.open("GET", "exo2.json?q="+value, true);
+  xmlhttp.send();}
