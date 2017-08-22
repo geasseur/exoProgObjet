@@ -1,0 +1,17 @@
+form{
+  margin-left: 20px;
+}
+
+.ficheProduit{
+  background-color: red;
+  width: 50%;
+  margin: 20px 25%;
+}
+
+h2{
+  background-color: blue;
+}
+
+h2, h3, p{
+  text-align: center;
+}
