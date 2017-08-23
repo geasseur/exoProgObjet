@@ -96,8 +96,8 @@ verificationUser.lancement();*/
 /******************************************/
 
 
-
 /*
+
 function guerrier(nom,attaque,defense,vie){
   this.nom = nom,
   this.attaque = attaque,
@@ -179,7 +179,7 @@ kadgar.attaqueMage(arthas, illidan);
 /******************************************/
 
 
-/*
+
 
 function recupDonnee(){
       var donnee = [];
@@ -210,54 +210,94 @@ function ficheProduit(titre, accroche, description){
     $("#description").val("");
     }
 }
-*/
 
-/********************************************************************/
-/********************************************************************/
-/********************************************************************/
-/********************************************************************/
-/********************************************************************/
-/*****************EXERCICE 4*****************************************/
-/********************************************************************/
-/********************************************************************/
-/********************************************************************/
-/********************************************************************/
 
-// ancien code de compatibilité, aujourd’hui inutile
-/*function makeRequest(url) {
-
-        var httpRequest = false;
-
-        httpRequest = new XMLHttpRequest();
-
-        if (!httpRequest) {
-            alert('Abandon :( Impossible de créer une instance XMLHTTP');
-            return false;
-        }
-        httpRequest.onreadystatechange = function() { alertContents(httpRequest); };
-        httpRequest.open('GET', "exo.json", true);
-        httpRequest.send(null);
-
-    }
-
-    function alertContents(httpRequest) {
-
-        if (httpRequest.readyState == XMLHttpRequest.DONE) {
-            if (httpRequest.status == 200) {
-                alert(httpRequest.responseText);
-            } else {
-                alert('Un problème est survenu avec la requête.');
+/************************************************/
+/*******************************************************/
+/******************************************************/
+/**************************************************/
+/****************************************************/
+/*****************EXERCICE 4**************************/
+/******************************************************/
+/*****************************************************/
+/********************************************************/
+/**************************************************/
+/*
+  function recherche(value1, value2){
+    console.log(value1,value2);
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var ordre = [];
+      var myObj = JSON.parse(this.responseText);
+      document.getElementById("tabJeu").innerHTML = "";
+      if (value2 == "croissant") {
+        for (var i = 0; i < myObj.game.length; i++) {
+          var test = 0;
+          if (myObj.game[i][value1] > test){
+            ordre.push(myObj.game[i][value1]);
+            test = myObj.game[i][value1];
+          }
+          else if (myObj.game[i][value1] < test) {
+            for (var j = 0; j < ordre.length; j++) {
+              if (ordre[j] > value1) {
+                ordre.slice(j-1, 0, myObj.game[i][value1])
+                test = myObj.game[i][value1];
+              }
             }
+          }
+          document.getElementById("tabJeu").innerHTML += "<td>" + test[i] + "</td>"+" "+ "<td>" + myObj.game[i]["nom"]+ "</td>";
+          console.log(ordre);
         }
+      }
+      else if (value2 == "decroissant") {
 
-    }
-*/
-
+      }
+  };
+  xmlhttp.open("GET", "exo2.json?q="+value1+value2, true);
+  xmlhttp.send();}
+}*/
+var trie = [];
+function recherche(){
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML = this.responseText;
+  if (this.readyState == 4 && this.status == 200) {
+    var myObj = JSON.parse(this.responseText);
+    console.log(jeux.value);
+    if (jeux.value == "date") {
+      myObj.game.sort(function (a,b){
+        if (a["date"] < b["date"]) {
+          return -1;
+        }
+        else if (a["date"] > b["date"]) {
+          return 1;
+        }
+        else{
+          return 0;
+        }
+      });
+        $("#tabJeu").innerHTML = myObj.game;
+        console.table(myObj.game);
+      }
+    else if (jeux.value == "alphabet") {
+      myObj.game.sort(function (a,b){
+        if (a["nom"] < b["nom"]) {
+          return -1;
+        }
+        else if (a["nom"] > b["nom"]) {
+          return 1;
+        }
+        else{
+          return 0;
+        }
+      });
+      for( var i in myObj.game){
+        $("tabJeu").append("<td>" + myObj.game[i]["nom"] + "</td>");
+      }
+      console.table(myObj.game);
     }
-  };
-  xmlhttp.open("GET", "exo.json", true);
-  xmlhttp.send();
+
+    }
+  }
+  xmlhttp.open("GET", "exo2.json?q=", true);
+  xmlhttp.send();}

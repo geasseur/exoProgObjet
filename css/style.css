@@ -2,6 +2,10 @@ form{
   margin-left: 20px;
 }
 
+#tabJeu tr td{
+  margin: 0 10px;
+}
+
 .ficheProduit{
   background-color: red;
   width: 50%;
