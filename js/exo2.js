@@ -276,7 +276,11 @@ function recherche(){
           return 0;
         }
       });
-        $("#tabJeu").innerHTML = myObj.game;
+        document.getElementById("tabJeu").innerHTML = "";
+        for( var i in myObj.game){
+          console.log(myObj.game[i]["nom"]);
+          document.getElementById("tabJeu").innerHTML+="<td>" + myObj.game[i]["nom"] + "</td>"+"<td>" + myObj.game[i]["date"] + "</td>" + "<td>" + myObj.game[i]["genre"] + "</td>" + "<td>" + myObj.game[i]["editeur"] + "</td>";
+        }
         console.table(myObj.game);
       }
     else if (jeux.value == "alphabet") {
@@ -291,13 +295,15 @@ function recherche(){
           return 0;
         }
       });
+      document.getElementById("tabJeu").innerHTML = "";
       for( var i in myObj.game){
-        $("tabJeu").append("<td>" + myObj.game[i]["nom"] + "</td>");
+        console.log(myObj.game[i]["nom"]);
+        document.getElementById("tabJeu").innerHTML+="<td>" + myObj.game[i]["nom"] + "</td>"+"<td>" + myObj.game[i]["date"] + "</td>" + "<td>" + myObj.game[i]["genre"] + "</td>" + "<td>" + myObj.game[i]["editeur"] + "</td>";
       }
       console.table(myObj.game);
     }
 
     }
   }
-  xmlhttp.open("GET", "exo2.json?q=", true);
+  xmlhttp.open("GET", "exo2.json", true);
   xmlhttp.send();}
