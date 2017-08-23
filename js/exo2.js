@@ -222,41 +222,6 @@ function ficheProduit(titre, accroche, description){
 /*****************************************************/
 /********************************************************/
 /**************************************************/
-/*
-  function recherche(value1, value2){
-    console.log(value1,value2);
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      var ordre = [];
-      var myObj = JSON.parse(this.responseText);
-      document.getElementById("tabJeu").innerHTML = "";
-      if (value2 == "croissant") {
-        for (var i = 0; i < myObj.game.length; i++) {
-          var test = 0;
-          if (myObj.game[i][value1] > test){
-            ordre.push(myObj.game[i][value1]);
-            test = myObj.game[i][value1];
-          }
-          else if (myObj.game[i][value1] < test) {
-            for (var j = 0; j < ordre.length; j++) {
-              if (ordre[j] > value1) {
-                ordre.slice(j-1, 0, myObj.game[i][value1])
-                test = myObj.game[i][value1];
-              }
-            }
-          }
-          document.getElementById("tabJeu").innerHTML += "<td>" + test[i] + "</td>"+" "+ "<td>" + myObj.game[i]["nom"]+ "</td>";
-          console.log(ordre);
-        }
-      }
-      else if (value2 == "decroissant") {
-
-      }
-  };
-  xmlhttp.open("GET", "exo2.json?q="+value1+value2, true);
-  xmlhttp.send();}
-}*/
 var trie = [];
 function recherche(){
   var xmlhttp = new XMLHttpRequest();
