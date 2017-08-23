@@ -16,7 +16,7 @@
     </head>
     <body>
 
-<!--        <form id="produit" action="index.html" method="post">
+        <form id="produit" action="index.html" method="post">
           <h1>Création fiche produit</h1>
           <b>titre</b></br>
           <input id="titre" type="text" name="titre" value=""></br>
@@ -28,20 +28,21 @@
         <button onclick="recupDonnee()" type="button" name="button">créer</button>
         <section id="resultat">
 
-        </section>-->
-        <select id="client" name="client" onchange="recherche(this.value)">
+        </section>
+
+        <select id="jeux" name="jeux" onchange="recherche()">
           <option value="">Choisir un facteur</option>
           <option value="date">date de sortie</option>
           <option value="alphabet">ordre alphabetique</option>
         </select>
-        <select class="ordre" name="ordre">
+        <select id="ordre" name="ordre">
           <option value="">Choisir une option</option>
           <option value="croissant">Croissant</option>
           <option value="decroissant">Décroissant</option>
         </select>
         <span
     style = "cursor: pointer ; text-decoration: underline"
-    onclick="recherche(this.value)">
+    onclick="recherche(jeux.value, ordre.value)">
         Effectuer une requête
         </span>
         <table><tbody id="tabJeu">
@@ -59,7 +60,7 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
-        <script src="js/exo.js"></script>
+        <script src="js/exo2.js"></script>
         <script src="../../jquery-3.2.1.js"></script>
     </body>
 </html>
